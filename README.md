@@ -2,9 +2,9 @@
 
 ## Screenshots
 
-!["HomePage"] https://github.com/ibrahim1567/Scheduler-/blob/master/docs/HomePage.png
+https://github.com/ibrahim1567/Scheduler-/blob/master/docs/HomePage.png
 
-!["Delete Appointments"] https://github.com/ibrahim1567/Scheduler-/blob/master/docs/Edit%20Appointment.png
+https://github.com/ibrahim1567/Scheduler-/blob/master/docs/Edit%20Appointment.png
 
 ## Key Features on the Scheduler App
 
