@@ -1,33 +1,36 @@
-export function getInterview(state,interview) {
-  if (interview) {
-    const stateUpdated = {...interview, interviewer:state.interviewers[interview.interviewer]}
- 
-    return stateUpdated
-  } else {
-    return null
-  }
-}
- 
 export function getAppointmentsForDay(state, day) {
-  const filteredDays = state.days.filter( mappedDay => mappedDay.name === day);
-  if (!filteredDays.length) { return []; }
-  const appointmentArray = [];
-  for (let item in filteredDays[0].appointments){
- 
-    appointmentArray.push(state.appointments[filteredDays[0].appointments[item]])
+  const filteredAppointments = [];
+  state.days.forEach(element => {
+    if (element.name === day) {
+      element.appointments.forEach(id => {
+        filteredAppointments.push(state.appointments[id]);
+      });
+    }
+  });
+  return filteredAppointments;
+}
+export function getInterview(state, interview) {
+  if (!interview) {
+    return null;
+  } else {
+    const interviewerInfo = state.interviewers[interview.interviewer]
+   
+
+    return {
+      student: interview.student,
+      interviewer: interviewerInfo
+    };
   }
-return appointmentArray
 }
 
-export  function getInterviewersForDay(state, day) {
-  if (!state.interviewers) return [];
-  const filteredDay = state.days.filter( mappedDay => mappedDay.name === day)[0];
-
-  if (!filteredDay) return [];
-
-  if (!filteredDay.interviewers) return [];
-
-  const result =  Object.values(state.interviewers).filter( interviewer => filteredDay.interviewers.includes(interviewer.id))
-  
-  return result;
+export function getInterviewersForDay(state, day) {
+  const filteredAppointments = [];
+  state.days.forEach(element => {
+    if (element.name === day) {
+      element.interviewers.forEach(id => {
+        filteredAppointments.push(state.interviewers[id]);
+      });
+    }
+  });
+  return filteredAppointments;
 }

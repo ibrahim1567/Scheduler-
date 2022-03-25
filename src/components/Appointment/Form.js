@@ -21,6 +21,11 @@ import InterviewerList from "components/InterviewerList"
       return;
     }
 
+    if (!interviewer){
+      setError("Please select an interviewer");
+      return;
+    }
+
     props.onSave(name, interviewer);
   }
 
